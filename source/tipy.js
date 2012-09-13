@@ -1,5 +1,3 @@
-/// Προσθέτει tooltip...
-
 jQuery.fn.tooltip = function(text,pos,duration,classes)
 {
 	var T = this;
