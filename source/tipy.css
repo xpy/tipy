@@ -18,6 +18,8 @@ The least you have to do, is to style this one.
     max-width: 200px;
     width: auto;
     z-index: 100;
+    border: 1px solid #666;
+    border: 0 solid rgba(0,0,0,0);
 }
 
 /*
@@ -25,7 +27,6 @@ The Default Style, uses ::before and ::After to style the little arrow
 */
 #tipy:before, #tipy:after {
     background: inherit;
-    content: "";
     display: block;
     position: absolute;
 }
@@ -67,20 +68,26 @@ Position and Rotate the arrow in relation to #tipy position
     -o-transform-origin:center center;
     -ms-transform-origin:center center;
     transform-origin:center center;
+
+    border: 1px solid #666;
+    border: 0 solid rgba(0,0,0,0);
 }
 
 #tipy.position-t:before, #tipy.position-b:before, #tipy.position-t:after, #tipy.position-b:after{
     left: 0; right: 0;
     margin: 0 auto;
+    content: '';
+
 }
 
 #tipy.position-r:before, #tipy.position-l:before, #tipy.position-r:after, #tipy.position-l:after{
     top: 0; bottom: 0;
     margin: auto 0;
+    content: '';
 }
 
-#tipy.position-tr:before, #tipy.position-br:before, #tipy.position-bl:before, #tipy.position-tl:before{ width: 10px;    height: 10px; }
-#tipy.position-tr:after, #tipy.position-br:after, #tipy.position-bl:after, #tipy.position-tl:after{     width:  6px;    height:  6px;}
+#tipy.position-tr:before, #tipy.position-br:before, #tipy.position-bl:before, #tipy.position-tl:before{ width: 10px;    height: 10px;     content: '';}
+#tipy.position-tr:after, #tipy.position-br:after, #tipy.position-bl:after, #tipy.position-tl:after{     width:  6px;    height:  6px;     content: '';}
 
 #tipy.position-tr:before{ bottom: -6px;  left: -6px;  }
 #tipy.position-tr:after { bottom:  0  ;  left:  0  ;  }
