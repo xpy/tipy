@@ -152,5 +152,44 @@ Here, we leave create space for the little arrow to fit it ( otherwise it'll be 
 #tipy.yellow {
     background: #ffd700;
     color: #483d8b;
-    text-shadow: 0 1px 0 #1b1a37;
+    text-shadow: 0 1px 0 rgba(27, 26, 55, 0.35);
+}
+#tipy.shaky {
+    -moz-animation-delay:.5s;
+    -moz-animation-duration: .7s;
+    -moz-animation-timing-function: ease-in-out;
+    -moz-animation-name: shaky;
+}
+
+@-moz-keyframes shaky {
+    10% {
+        transform: translate(5px,0);
+    }
+    20% {
+        transform: translate(0px,0);
+    }
+    30% {
+        transform: translate(4px,0);
+    }
+    40% {
+        transform: translate(0,0);
+    }
+    50% {
+        transform: translate(3px,0);
+    }
+    60% {
+        transform: translate(0px,0);
+    }
+    70% {
+        transform: translate(2px,0);
+    }
+    80% {
+        transform: translate(0,0);
+    }
+    90% {
+        transform: translate(1,0);
+    }
+    100% {
+        transform: translate(0,0);
+    }
 }

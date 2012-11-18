@@ -1,0 +1,25 @@
+html,body { margin: 0; padding: 0 ; height: 100%;}
+
+body { background: url("img/retina_dust.png"); font-family: 'Pontano Sans', sans-serif;text-shadow: 1px 1px 1px rgba(0,0,0,.2); font-size: 18px; color: #333;}
+a,a:visited,a:link, a:hover{ text-decoration: none; color: #333;}
+
+.top { top: 0;}
+.right { right: 0; }
+.bottom { bottom: 0;}
+.left { left: 0; }
+.top.bottom { margin: auto 10px;  }
+.left.right { margin: 10px auto; }
+.top.bottom.right.left { margin:  auto;}
+.demo-tipy {  position: absolute; margin: 10px; width: 100px; height: 20px;
+    font-size: 15px;
+    font-weight: normal;
+    /*border: 1px solid rgba(255, 255, 255, 0.3);*/
+    background: rgba(176, 196, 222, 0.38);
+    text-align: center;
+    padding: 10px;
+    box-shadow: 5px 5px 0 rgba(42, 72, 101, .2),5px 5px 0 rgba(255,255,255,.3) inset;
+}
+
+#center-div { width: 180px; height: 180px; position: absolute; margin: auto }
+
+[data-tipy]:after { content: normal !important;}

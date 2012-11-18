@@ -1,9 +1,19 @@
 
 jQuery.fn.tipy = function(text,pos,duration,classes)
 {
+	if(this.is('[data-tipied]')){return;}
 	var T = this;
-	pos = ( pos === undefined ) ? 'trbl' : pos; // Default is 'auto' ( 'trbl' )
-	if(typeof pos == 'number'){ classes = duration; duration = pos; pos="trbl"; }
+	var isTitle = false;
+	if(!text){
+		text =T.attr('data-tipy');
+		if(!text){
+			text= T.attr('title');
+			isTitle  = true;
+			T.attr('data-title',text).attr('title',' ');
+		}
+	}
+	pos = ( pos === undefined || pos === null ) ? 'all' : pos; // Default is 'auto' ( 'all' )
+	if(typeof pos == 'number'){ classes = duration; duration = pos; pos="all"; }
 	if(typeof duration == 'string') { classes = duration; duration = null;}
 	classes = classes || '';
 	var classAttr = (classes !== '')?'class="'+classes+'"': ''; // Add Optional Classes...
@@ -26,26 +36,40 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 	T.attr('data-tipied',''); // Just to know if my tipy! is being displayed
 
 	// Dimensions are tricky so we use a Float
+
 	var w = parseFloat($tipy.outerWidth()),
 		h = parseFloat($tipy.outerHeight());
-
 	var left = 0, top = 0;  // TODO is this ok? Or maybe it should be a transform?
 
 	// Calculates and returns the position that the tipy! should be displayed...
 	function _autoPosition(){
+		var splitPos = pos.split(',');
+		if (splitPos.length == 1){
+			switch (splitPos[0]){
+				case 'all':
+					splitPos = ['t','r','b','l','tr','br','bl','tl'];
+					break;
+				case 'cross':
+					splitPos = ['t','r','b','l'];
+					break;
+				case 'x':
+					splitPos = ['tr','br','bl','tl'];
+					break;
+			}
+		}
 		// Calculate and store the available spaces... TODO What if the scroll is not on the window?
 		var space = {
 			't' :   objDim.t - $(window).scrollTop(),
 			'r' :   ( $(window).width() - objDim.r ) + $(window).scrollLeft(),
-			'b' :   $(window).height() - ($(window).scrollTop() - objDim.b),
+			'b' :   $(window).height() - ($(window).scrollTop() + objDim.b),
 			'l' :   objDim.l - $(window).scrollLeft()
 		},
 			wRemain = (w - objW)/ 2,
 			hRemain = (h - objH)/2;
 
 		// Check the position in the defined order...
-		for( var i = 0; i<pos.length;i++ ){
-			switch (pos[i]){
+		for( var i = 0; i<splitPos.length;i++ ){
+			switch (splitPos[i]){
 				case 't':
 					if(h < space.t && wRemain < space.l && wRemain < space.r ){ return 't';}
 					break;
@@ -58,14 +82,25 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 				case 'l':
 					if(w < space.l && hRemain < space.t && hRemain < space.b ){ return 'l';}
 					break;
+				case 'tr':
+					if(h < space.t && w < space.r ){ return 'tr';}
+					break;
+				case 'br':
+					if(w < space.r && h < space.b ){ return 'br'; }
+					break;
+				case 'bl':
+					if(h < space.b && w < space.l ){ return 'bl';}
+					break;
+				case 'tl':
+					if(w < space.l && h < space.t ){ return 'tl';}
+					break;
 			}
 		}
-
 		return 't';
 	} // _autoPosition
 
 	// If there is more than one positions defined choose the better one
-	if(pos.search(/^(t|tr|r|br|b|bl|l|tl)$/) < 0){ pos = _autoPosition();}
+	if(pos.split(',').length > 0){ pos = _autoPosition();}
 
 	// Place the element to the chosen position
 	switch (pos){
@@ -108,8 +143,12 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 
 	// The Destructor
 	T.leave = function(){
+		$tipy.off('click');
 		if(tipyInterval){ window.clearInterval(tipyInterval); }
 		$tipy.stop(true,false).animate({'opacity':0},300).remove();
+		if(isTitle){
+			if(isTitle){ T.attr('title',T.attr('data-title')).removeAttr('data-title');}
+		}
 		T.removeAttr('data-tipied');
 	};
 
@@ -142,13 +181,12 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 
 	$tipy.stop(true,false).animate({'opacity':1},300,function(){
 		if( duration > 0 ) {
-		$tipy.delay(duration * .5).animate({'opacity':0},(duration * .5), function(){$tipy.unbind('click')});
+		$tipy.delay(duration * .5).animate({'opacity':0},(duration * .5), function(){T.leave();});
 		}
 	});
 
 	return T;
 };
-
 
 // This is a self executing function which is needed for the default hover functionality
 var tipyController = function(attr){
@@ -156,30 +194,31 @@ var tipyController = function(attr){
 	attr = attr || 'data-tipy';
 	var isTitle = attr == 'title'; // TODO title implementation has bugs for nested titled elements
 	var checkerIn = '['+attr+']';
-	var checkerOut = (isTitle)?'[data-title]':'['+attr+']';
 	var $tar;
-	var $tmptar;
+	var disabled = false;
+
+	this.disable = function(){disabled = true;};
+	this.enable = function(){disabled = false;};
 
 	var removeTipy = function(e){
 		$tar.leave();
-		if(isTitle){ $tar.attr('title',$tar.attr('data-title')).removeAttr('data-title');}
 		$tar = undefined;
 	};
 
 	function tipyCheck(e){
-
+		if(!disabled){
 		var $tmptar = $(e.target).closest(checkerIn);
 		$tar = ( $tmptar.is(checkerIn) && !$tmptar.is($tar) ) ? $tmptar : ( $tar || $tmptar );
 		if($tar.is(checkerIn) && !$tar.is('[data-tipied]')){
 			var tipyClass = $tar.attr('data-tipy-class') || '';
-			var text = $tar.attr(attr);
-			if(isTitle){ $tar.attr('data-title',text).attr('title',' ');}
-			$tar.tipy(text,0,tipyClass);
-
-			$($tar).unbind('mouseleave',removeTipy).one('mouseleave',removeTipy);
+			var tipyPos = $tar.attr('data-tipy-pos') || 'all';
+			$tar.tipy(null,tipyPos,0,tipyClass);
+			$($tar).off('mouseleave',removeTipy).one('mouseleave',removeTipy);
+		}
 		}
 	}
 
-	$(document).unbind('mouseover',tipyCheck).bind('mouseover',tipyCheck);
+	$(document).off('mouseover',tipyCheck).on('mouseover',tipyCheck);
+	return this;
 
 }(/* in here you can put any attribute to override the default data-tipy attribute*/);
