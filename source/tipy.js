@@ -4,6 +4,7 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 	if(this.is('[data-tipied]')){return;}
 	var T = this;
 	var isTitle = false;
+	if(typeof text == 'number'){ classes = duration; duration = pos; pos = text; text = null;}
 	if(!text){
 		text =T.attr('data-tipy');
 		if(!text){
@@ -54,6 +55,12 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 					break;
 				case 'x':
 					splitPos = ['tr','br','bl','tl'];
+					break;
+				case 'hor':
+					splitPos = ['r','l'];
+					break;
+				case 'ver':
+					splitPos = ['t','b'];
 					break;
 			}
 		}
@@ -192,13 +199,14 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 var tipyController = function(attr){
 
 	attr = attr || 'data-tipy';
-	var isTitle = attr == 'title'; // TODO title implementation has bugs for nested titled elements
+//	var isTitle = attr == 'title'; // TODO title implementation has bugs for nested titled elements
 	var checkerIn = '['+attr+']';
 	var $tar;
 	var disabled = false;
 
 	this.disable = function(){disabled = true;};
 	this.enable = function(){disabled = false;};
+	this.setAttr = function(newAttr){ attr = newAttr; };
 
 	var removeTipy = function(e){
 		$tar.leave();
