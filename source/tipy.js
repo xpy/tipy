@@ -1,6 +1,7 @@
 
 jQuery.fn.tipy = function(text,pos,duration,classes)
 {
+	if(this.length==0) return this;
 	if(this.is('[data-tipied]')){return;}
 	var T = this;
 	var isTitle = false;
@@ -76,6 +77,10 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 
 		// Check the position in the defined order...
 		for( var i = 0; i<splitPos.length;i++ ){
+			if (('toprightbottomleft').search(splitPos[i])>=0){ //  This is REALLY weird, but does the job... ( can't use indexOf )...
+				splitPos[i] = splitPos[i][0];
+
+			}
 			switch (splitPos[i]){
 				case 't':
 					if(h < space.t && wRemain < space.l && wRemain < space.r ){ return 't';}
@@ -107,7 +112,7 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 	} // _autoPosition
 
 	// If there is more than one positions defined choose the better one
-	if(pos.split(',').length > 0){ pos = _autoPosition();}
+	if(pos.split(',').length > 0){ pos = _autoPosition();} // TODO what if it is not Comma Separated and the keyword is not valid? ( I think it is not a good idea to regexp or iterate)
 
 	// Place the element to the chosen position
 	switch (pos){
@@ -144,7 +149,8 @@ jQuery.fn.tipy = function(text,pos,duration,classes)
 			top = parseInt(objDim.t - h);
 			break;
 		default :
-
+			left = parseInt(objDim.l + objW/2 - w/2);
+			top = parseInt( objDim.t - h);
 			break;
 	}
 
