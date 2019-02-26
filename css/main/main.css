@@ -1,0 +1,54 @@
+html,body { margin: 0; padding: 0 ; height: 100%;}
+
+body { background: url("img/retina_dust.png"); font-family: 'Pontano Sans', sans-serif;text-shadow: 1px 1px 1px rgba(0,0,0,.2); font-size: 18px; color: #333;}
+a,a:visited,a:link, a:hover{ text-decoration: none; color: #333;}
+img { border: none;}
+#main-wrapper {  width: 100%; height: 100%;position: relative;margin: auto; box-sizing: border-box; -moz-box-sizing: border-box; }
+#header-wrapper {  border-bottom: 1px dashed #ccc   ; position: fixed; background: url("img/retina_dust.png") ; z-index: 1; }
+#head-text { position: absolute; top: 96px; left: 120px; }
+
+.main-menu { position: absolute; bottom: 0; right: 0; font-family: Courgette, serif; padding: 6px;}
+.main-menu ul,.main-menu li,.main-menu a { display: inline-block; margin: 0;}
+.main-menu li:after{ content: '~'; margin: 0 10px 0 14px; position: relative; top: 2px;}
+.main-menu li:first-child:before{ content: '~'; margin: 0 14px 0 14px;  position: relative; top: 2px;}
+
+#content { overflow: hidden;}
+#content-inside { box-sizing: border-box; -moz-box-sizing: border-box; padding: 220px 20px 100px}
+#content-inside p {  text-indent: 20px;}
+
+.tipy   { font-style: italic; text-shadow: 2px 2px 1px rgba(0,0,0,.2); font-size: 22px; margin: 0 5px; font-weight: bold;}
+
+
+.question-section { margin: 0 0 20px 0; padding: 20px;}
+p {text-indent: 30px; margin: 10px 0;}
+
+.w700 { width: 700px;}
+.w600 { width: 600px;}
+.w450 { width: 450px;}
+.w300 { width: 300px;}
+.w200 { width: 200px;}
+.w150 { width: 150px;}
+.w100 { width: 100px;}
+.w75  { width: 75px;}
+.w50  { width: 50px;}
+.bg { background: rgba(0,0,0,0.02); }
+.wbg { background: rgba(255,255,255,0.3); }
+.centered { margin-left: auto; margin-right: auto; position: relative;}
+
+.full-width { width: 100%;}
+.bold { font-weight: bold;}
+
+h1,h2 { font-family: Courgette, serif; font-size: 30px; font-style: italic; font-weight: bold; margin:0 0 -20px 5px;}
+h1 { width: 100%; padding: 10px 0; position: relative;  border-top: 1px dashed #ccc; font-size: 40px; margin: 60px 0 10px 0;}
+h1:before,h1:after { display: inline-block; position: absolute;content: ''; top:-1px; right: -1000px; bottom: 0; width: 1000px; background: inherit; border: inherit;}
+h1:after { left: -1000px;}
+h2 a, h1 a { padding:  197px 0 0 0;} /* TODO WTF? anchor hack*/
+
+blockquote { border: 1px dashed #ccc; margin: 5px; padding: 10px 15px; background: rgba(255,255,255,.2); }
+
+
+.border-shadow { position: relative;}
+.border-shadow:before{ display: inline-block;content: ''; position: absolute; width: 100%; height: 100%; border: inherit; padding: 3px; top: -4px; left: -4px;}
+.border-shadow:after{ display: inline-block;content: ''; position: absolute; width: 100%; height: 100%; border: 2px solid #fff; padding: 1px; top: -3px; left: -3px;}
+
+code { font-size: 16px;}
