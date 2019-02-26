@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>tipy! A jQuery ToolTip plugin</title>
+	<meta name="description"
+	      content="tipy! is a stripped jQuery tooltip plugin. It is created in a such a way that it has the lowest number of the most required features.">
+	<link rel="stylesheet" href="source/tipy.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/prism.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
+	<script src="source/tipy.js"></script>
+	<script type="text/javascript" src="js/prism.js"></script>
+	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-28367526-2']);
+		_gaq.push(['_setDomainName', 'xpy.gr']);
+		_gaq.push(['_setAllowLinker', true]);
+		_gaq.push(['_trackPageview']);
+
+		(function () {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+
+	</script>
+</head>
+<body>
+<div id="main-wrapper">
+	<div id="header-wrapper" class="full-width">
+		<div class="w700 bg centered">
+			<a href="index.html" style="position: relative; left:-100px;display:inline-block;"><img
+					src="css/img/logo.png" alt="tipy!" style=";"></a>
+
+			<div id="head-text">
+				<p>a jQuery tooltip plugin that does just <span data-tipy="Displays A Tooltip -_-"
+				                                                class="bold">that!</span></p>
+			</div>
+			<nav class="main-menu scrolls-to">
+				<ul>
+					<li><a href="#tipy">about tipy!</a></li>
+					<li><a href="#indetail">in Detail</a></li>
+					<li><a href="#usage">usage</a></li>
+					<li><a href="demo.php">demo</a></li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+	<div id="content">
+		<div class="w700 centered bg" id="content-inside">
+
+			<h2><a href="#" name="tipy">What is tipy! ?</a></h2>
+
+			<div class="bg question-section">
+				<p>tipy! is just a jQuery tooltip plugin, nothing more, nothing less. You hover,a tooltip is shown.
+				   That's all!</p>
+			</div>
+			<h2><a href="#">So, What's so special about it?</a></h2>
+
+			<div class="bg question-section">
+				<p>Lots of things actually! Here is a list:</p>
+				<ul>
+					<li>
+						It's basic functionality is extremely simple.
+						<ol>
+							<li>Include The tipy.js and tipy.css files.</li>
+							<li>Add the desired text in a data-tipy attribute on your desired element(s).</li>
+							<li>Done!</li>
+						</ol>
+					</li>
+					<li>
+						It is based on <span data-tipy="That's cool!">Event Delegation</span>, which,
+						in plain words, means that you don't have to set-up every single tipy! on the screen.
+						In fact, you won't have to do anything even if a tipy-element jumps into your page, e.g. form
+						an ajax call, a DOM manipulation, or even if you put one <span data-tipy="Seriously, try that now...<br>
+						Open your inspector and add a data-tipy attribute, on any element on this page, with whatever nonsense you like in it">yourself</span>.
+					</li>
+					<li>
+						It can also work with titles ( or any other attribute ) with just a minor change.
+					</li>
+					<li>
+						It never gets out of the screen ( unless the screen is smaller than the tooltip... ).
+					</li>
+					<li>
+						It is just one element!
+					</li>
+				</ul>
+			</div>
+
+			<h2>Ok but... Can I trigger it manually?</h2>
+
+			<div class="bg question-section">
+				<p>
+					Of course you can! It is supposed to be a jQuery plugin isn't it?
+				</p>
+
+				<p>
+					Just use it like this
+				<pre><code class="language-javascript">$('.your-element').tipy("Your tipy! Text!");</code></pre>
+				Your tipy! will pop up, it will calculate the time needed for the tooltip to be read
+				and it will vanish as soon as this time has passed.
+				</p>
+			</div>
+
+			<h2>Cool! What about the custom styles?</h2>
+
+			<div class="bg question-section">
+				<p>
+					*ahem* Actually... There are no custom styles...
+				</p>
+			</div>
+
+			<h2>That's Ridiculous! Why?</h2>
+
+			<div class="bg question-section">
+				<p>
+					Custom styles are never -really- custom, they are just 'predefined styles'.
+					Predefined design cannot suit everyone unless it is really REALLY generic.
+					And then again, someone will always have to dive into the CSS to do some slight changes.
+					That is the main reason I skipped this step, after all, almost everyone knows how to write a couple
+					lines of CSS ( and unfortunately, almost everyone has to in the end ). <br>
+					Sounds like a silly concept, but here's the math behind it:</p>
+				<blockquote class="border-shadow">
+					x predefined styles -> x possibilities <br>
+					0 predefined styles -> infinite possibilities! <br>
+				</blockquote>
+				<p>
+					So... Dive in and make your own awesome styles.
+				</p>
+			</div>
+
+			<h2>Create my own Styles?</h2>
+
+			<div class="bg question-section">
+				<p>
+					Yep! And it's not that hard! As I said before, it is just one element, plus, the default style sheet
+					is pretty well commented, I believe it'll help you get started.
+				</p>
+			</div>
+
+			<h2>Ok! I'm convinced! How much?</h2>
+
+			<div class="bg question-section">
+				<p>
+					tipy! is ( and will forever be ) free.
+				</p>
+			</div>
+
+			<h2>Nice! Where can I get it?</h2>
+
+			<div class="bg question-section">
+				<p>
+					You can get it <a href="http://www.xpy.gr/tipy.rar"
+					                  title="tipy! files">[here]</a> (.js and .css file).
+					Or you can go to the project on GitHub <a
+						href="https://github.com/xpy/tipy">https://github.com/xpy/tipy</a>.
+				</p>
+			</div>
+
+			<h1 class=""><a href="#" name="indetail">In Detail...</a></h1>
+
+			<h2>What can tipy! do?</h2>
+
+			<div class="bg question-section">
+				<ul>
+					<li>It can be used like a common 'hover tooltip'</li>
+					<li>It can be manually triggered</li>
+					<li>Manual trigger can be done with options ( position, duration, additional Classes )</li>
+					<li>It has an automatic duration calculator depending on the tooltips words</li>
+					<li>It has an automatic positioning calculator, optionally depended on user defined positions</li>
+					<li>It works with titles as well</li>
+					<li>It will vanish if the trigger-element leaves the DOM</li>
+				</ul>
+			</div>
+			<h2>What does tipy! not do?</h2>
+
+			<div class="bg question-section">
+				<ul>
+					<li>You cannot have more than one tipy! on-screen at a time</li>
+					<li>It does not have "display options"</li>
+					<li>It doesn't do Ajax ( yet )</li>
+					<li>It doesn't adapt on window resize</li>
+				</ul>
+			</div>
+			<h1 class=""><a href="#" name="usage">Usage</a></h1>
+
+			<p>First of all you should include the tipy.js and tipy.css files:</p>
+            <pre><code class="language-markup">&lt;script src="js/tipy.js">&lt;/script>
+&lt;link href="css/tipy.css"></code></pre>
+			<p>This will set up the tipy! with the default <strong>hover</strong> functionality.
+			   Which means that every element with a <strong>data-tipy</strong> attribute will display a popup on
+			   hover
+			   with the <strong>data-tipy</strong> attribute value as content.
+			</p>
+
+			<p> If you want to use another attribute instead of <strong>data-tipy</strong>, you can use</p>
+			<pre><code class="language-javascript">tipyController.setAttr("YourAttr");</code></pre>
+			<p>for run time use, or alternatively you can edit the <strong>tipyController</strong> function in the
+				<strong>tipy.js</strong> file,there are comments to show you the way.
+			   If you want to disable the default hover behaviour you can do it by calling</p>
+			<pre><code class="language-javascript">tipyController.disable();</code></pre>
+			<p>Then you can enable it again with</p>
+			<pre><code class="language-javascript">tipyController.enable();</code></pre>
+			<hr>
+			<h2 style="margin-bottom: 0;">Manual Trigger</h2>
+
+			<p>You can trigger a tipy! manually the same way you will use any jQuery plugin</p>
+			<pre><code class="language-javascript">$('.tipy-element').tipy();</code></pre>
+			<p>The <strong>tipy()</strong> function typically takes four arguments:</p>
+			<blockquote class="border-shadow">
+				<ol>
+					<li>The tipy! text ( as string )</li>
+					<li>The desired positioning ( as a string )</li>
+					<li>The duration of the tipy! ( as an integer, in ms )</li>
+					<li>Any additional classes to be added to the tipy! ( as a space separated string )</li>
+				</ol>
+			</blockquote>
+			<p>Example:</p>
+            <pre><code class="language-javascript">$('.target-element').tipy('tipy!','top',5000,'red shaky');</code></pre>
+			<p>This one will display a tooltip with the content 'tipy!' on top of the "target-element" which will stay for 5secs and will have the classes red and shaky.</p>
+
+			<p>The function can also be called with less or even zero arguments. Bellow are all the possible
+			   variations:</p>
+			<pre><code class="language-javascript">$('.target-element').tipy('tipy!','top',5000);</code></pre>
+			<p>Omitting the last ( class ) argument will add no classes to the tipy! element</p>
+			<pre><code class="language-javascript">$('.target-element').tipy('tipy!','top');</code></pre>
+			<p>Omitting the last ( class ) and before-last ( delay ) argument will force the tipy! plugin to calculate
+			   the delay based on the time needed to be read.</p>
+			<pre><code class="language-javascript">$('.target-element').tipy('tipy!','top','red');</code></pre>
+			<p>You can also omit the delay argument by passing a string, which will then be passed as the class
+			   argument</p>
+			<pre><code class="language-javascript">$('.target-element').tipy('tipy!');</code></pre>
+			<p>Omitting the last three arguments will result in a tipy that will calculate the delay and also display in
+			   the first available space around the target, starting from top and going clockwise</p>
+			<pre><code class="language-javascript">$('.target-element').tipy();</code></pre>
+			<p>Omitting all the arguments, tipy! will try to get it's content form the data-tipy attribute, if there is
+			   no such attribute, it will try the title attribute. The Position and the Delay will be automatically
+			   calculated</p>
+			<pre><code class="language-javascript">$('.target-element').tipy(5000);</code></pre>
+			<p>Passing an int as the first argument, content and position will be automatically calculated</p>
+			<pre><code class="language-javascript">$('.target-element').tipy(5000,'red');</code></pre>
+			<p>You can as well pass a class after the delay.</p>
+			<pre><code class="language-javascript">$('.target-element').tipy(null,'top',5000,'red');</code></pre>
+			<p>You can pass 'null' as the first argument if you want only the content to be automatically
+			   calculated</p>
+			<hr>
+			<h2 style="margin-bottom: 0;">Positioning, Delay and Classes</h2>
+
+			<p>Positioning can be done using the words below as a comma separated string:</p>
+			<blockquote class="border-shadow">
+				<ul>
+					<li>top ( or t )</li>
+					<li>tr ( for top-right )</li>
+					<li>right ( or r )</li>
+					<li>br ( for bottom-right )</li>
+					<li>bottom ( or b )</li>
+					<li>bl ( for bottom-left )</li>
+					<li>left ( or l )</li>
+					<li>tl ( for top-left )</li>
+				</ul>
+			</blockquote>
+			<p>example:</p>
+			<pre><code class="language-javascript">$('.target-element').tipy(null,'top,right,bottom,left',5000,'red');
+$('.target-element').tipy(null,'t,tr,r,br,b',5000,'red');</code></pre>
+			<p>There are also some predefined keywords:</p>
+			<blockquote class="border-shadow">
+				<ul>
+					<li>all ( behaves like 't,tr,r,br,b,bl,l,tl' )</li>
+					<li>cross ( behaves like 't,r,b,l' )</li>
+					<li>x ( behaves like 'tr,br,bl,tl' )</li>
+					<li>hor ( behaves like 'r,l' )</li>
+					<li>ver ( behaves like 't,b' )</li>
+				</ul>
+			</blockquote>
+			<p>tipy! will be displayed in the first position with the available visible space. If there is no such
+			   position ( e.g.
+			   it is out of view ) it will be displayed on top </p>
+
+			<p>If no delay is defined ( e.g. the delay is not a number ) the delay will be calculated by the number of the content's words,
+			   this may not be very accurate but it's pretty useful if you don't want to define a delay for every tipy but you really need to have one.
+			   Also, if the delay is less or equal to 0 the tipy! will be a "sticky" one and will vanish only if the user clicks on it.
+			   The tipy! will leave on click even if it is on a delay.
+			</p>
+
+			<p>At this time, there are three extra classes defined in the css file and they exist mostly for
+			   demonstrating
+			   purposes. More may be added in the future. Here they are:</p>
+			<blockquote class="border-shadow">
+				<ul>
+					<li>red ( makes the background of the tipy red )</li>
+					<li>yellow ( makes the background of the tipy yellow )</li>
+					<li>shaky ( makes the tipy shake a short time after it pops up )</li>
+				</ul>
+			</blockquote>
+			<p>That's all you need to know about the tipy!</p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function scrollToCheck(e) {
+
+		var $tar = $(e.target).closest('a');
+		var $par = $tar.closest('.scrolls-to');
+		var href = $tar.attr('href');
+		if ($par.length && href.search(/#/) >= 0) {
+			e.preventDefault();
+			e.returnValue = false;
+			var target = href.split('#')[1];
+			var $target = $("[name='" + target + "']");
+			if ($target.length) {
+				$('html').stop().animate({'scrollTop':$target.offset().top},500);
+			}
+		}
+	}
+	$(window).on('click', scrollToCheck);
+</script>
+</body>
+</html>
